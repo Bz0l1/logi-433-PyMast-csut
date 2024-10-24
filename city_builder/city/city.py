@@ -1,4 +1,5 @@
 from building import *
+from utils.exceptions import NotEnoughResourcesError
 
 class City:
     def __init__(self) -> None:
@@ -11,5 +12,5 @@ class City:
             'resident': 3
         }
     
-    def add_building(self, building) -> None:
-        self.add_building(building)
+    def can_afford(self, cost: dict):
+        return all(self.resources[res] >= cost.get(res, 0) for res in cost)
